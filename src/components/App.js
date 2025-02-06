@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function Bgchanger(){
     const [color, setColor] = useState("olive")
