@@ -1,15 +1,19 @@
 const path = require("path");
 
 module.exports = {
-    entry: "/src/components/App.js",
+    entry: path.resolve(__dirname, "src/components/App.js"),  
     mode: "production",
-    output:{
-        path: path.resolve("dist"),
+    output: {
+        path: path.resolve(__dirname, "dist"),
         filename: "main.js",
-        libraryTarget: "commonjs"
+        libraryTarget: "commonjs2"
     },
-    module:{
-        rules:[
+    externals: {  
+        react: "react",  
+        "react-dom": "react-dom"  
+    },
+    module: {
+        rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
@@ -25,5 +29,8 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             }
         ]
+    },
+    resolve: {
+        extensions: [".js", ".jsx"]
     }
-}
+};
